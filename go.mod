@@ -4,8 +4,6 @@ go 1.24
 
 toolchain go1.24.2
 
-replace github.com/go-resty/resty/v2 => github.com/LBeernaertProton/resty/v2 v2.0.0-20231129100320-dddf8030d93a
-
 require (
 	github.com/ProtonMail/gluon v0.17.0
 	github.com/ProtonMail/go-crypto v1.2.0
@@ -15,7 +13,6 @@ require (
 	github.com/bradenaw/juniper v0.15.3
 	github.com/emersion/go-message v0.18.2
 	github.com/emersion/go-vcard v0.0.0-20241024213814-c9703dde27ff
-	github.com/go-resty/resty/v2 v2.0.0-00010101000000-000000000000
 	github.com/google/uuid v1.6.0
 	github.com/sirupsen/logrus v1.9.3
 	gitlab.com/c0b/go-ordered-json v0.0.0-20201030195603-febf46534d5a
@@ -30,6 +27,7 @@ require (
 	github.com/andybalholm/cascadia v1.3.3 // indirect
 	github.com/cloudflare/circl v1.6.0 // indirect
 	github.com/cronokirby/saferith v0.33.0 // indirect
+	github.com/go-resty/resty/v2 v2.16.5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	golang.org/x/crypto v0.38.0 // indirect
 	golang.org/x/sync v0.14.0 // indirect
