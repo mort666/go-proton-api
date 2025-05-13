@@ -10,7 +10,6 @@ require (
 	github.com/Masterminds/semver/v3 v3.3.1
 	github.com/ProtonMail/gluon v0.17.0
 	github.com/ProtonMail/go-crypto v1.2.0
-	github.com/ProtonMail/go-proton-api v0.0.0-00010101000000-000000000000
 	github.com/ProtonMail/go-srp v0.0.7
 	github.com/ProtonMail/gopenpgp/v2 v2.8.3
 	github.com/PuerkitoBio/goquery v1.10.3
