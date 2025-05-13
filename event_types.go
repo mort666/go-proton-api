@@ -16,8 +16,6 @@ type Event struct {
 
 	UserSettings *UserSettings
 
-	MailSettings *MailSettings
-
 	Messages []MessageEvent
 
 	Labels []LabelEvent
@@ -38,10 +36,6 @@ func (event Event) String() string {
 
 	if event.User != nil {
 		parts = append(parts, "user: [modified]")
-	}
-
-	if event.MailSettings != nil {
-		parts = append(parts, "mail-settings: [modified]")
 	}
 
 	if len(event.Messages) > 0 {
@@ -104,8 +98,6 @@ type EventItem struct {
 
 type MessageEvent struct {
 	EventItem
-
-	Message MessageMetadata
 }
 
 type LabelEvent struct {

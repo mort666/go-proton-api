@@ -20,7 +20,6 @@ const (
 
 type ContactSettings struct {
 	MIMEType         *rfc822.MIMEType
-	Scheme           *EncryptionScheme
 	Sign             *bool
 	Encrypt          *bool
 	EncryptUntrusted *bool
@@ -38,14 +37,6 @@ func (cs *ContactSettings) SetMimeType(mimeType rfc822.MIMEType) {
 	}
 	*cs.MIMEType = mimeType
 }
-
-func (cs *ContactSettings) SetScheme(scheme EncryptionScheme) {
-	if cs.Scheme == nil {
-		cs.Scheme = new(EncryptionScheme)
-	}
-	*cs.Scheme = scheme
-}
-
 func (cs *ContactSettings) SetSign(enabled bool) {
 	if cs.Sign == nil {
 		cs.Sign = new(bool)
@@ -83,21 +74,6 @@ func (c *Contact) GetSettings(kr *crypto.KeyRing, email string, cardType CardTyp
 	}
 
 	var settings ContactSettings
-
-	scheme, err := group.Get(FieldPMScheme)
-	if err != nil {
-		return ContactSettings{}, err
-	}
-
-	if len(scheme) > 0 {
-		switch scheme[0] {
-		case "pgp-inline":
-			settings.Scheme = newPtr(PGPInlineScheme)
-
-		case "pgp-mime":
-			settings.Scheme = newPtr(PGPMIMEScheme)
-		}
-	}
 
 	mimeType, err := group.Get(FieldPMMIMEType)
 	if err != nil {
@@ -185,19 +161,6 @@ func (c *Contact) SetSettings(kr *crypto.KeyRing, email string, cardType CardTyp
 		return nil
 	}
 
-	// X-PM-SCHEME
-	if settings.Scheme != nil {
-		switch *settings.Scheme {
-		case PGPInlineScheme:
-			if err := group.Set(FieldPMScheme, "pgp-inline", vcard.Params{}); err != nil {
-				return err
-			}
-		case PGPMIMEScheme:
-			if err := group.Set(FieldPMScheme, "pgp-mime", vcard.Params{}); err != nil {
-				return err
-			}
-		}
-	}
 	// X-PM-MIMETYPE
 	if settings.MIMEType != nil {
 		switch *settings.MIMEType {

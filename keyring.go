@@ -1,59 +1,13 @@
 package proton
 
 import (
-	"bytes"
 	"encoding/base64"
 	"encoding/json"
 	"errors"
-	"io"
-	"strings"
 
-	"github.com/ProtonMail/go-crypto/openpgp"
-	"github.com/ProtonMail/go-crypto/openpgp/armor"
 	"github.com/ProtonMail/gopenpgp/v2/crypto"
 	"github.com/bradenaw/juniper/xslices"
 )
-
-func ExtractSignatures(kr *crypto.KeyRing, arm string) ([]Signature, error) {
-	entities := xslices.Map(kr.GetKeys(), func(key *crypto.Key) *openpgp.Entity {
-		return key.GetEntity()
-	})
-
-	p, err := armor.Decode(strings.NewReader(arm))
-	if err != nil {
-		return nil, err
-	}
-
-	msg, err := openpgp.ReadMessage(p.Body, openpgp.EntityList(entities), nil, nil)
-	if err != nil {
-		return nil, err
-	}
-
-	if _, err := io.ReadAll(msg.UnverifiedBody); err != nil {
-		return nil, err
-	}
-
-	if !msg.IsSigned {
-		return nil, nil
-	}
-
-	var signatures []Signature
-
-	for _, signature := range msg.UnverifiedSignatures {
-		buf := new(bytes.Buffer)
-
-		if err := signature.Serialize(buf); err != nil {
-			return nil, err
-		}
-
-		signatures = append(signatures, Signature{
-			Hash: signature.Hash.String(),
-			Data: crypto.NewPGPSignature(buf.Bytes()),
-		})
-	}
-
-	return signatures, nil
-}
 
 type Key struct {
 	ID         string

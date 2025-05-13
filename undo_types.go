@@ -10,5 +10,4 @@ type UndoToken struct {
 }
 
 type UndoRes struct {
-	Messages []Message
 }
