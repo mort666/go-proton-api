@@ -1,6 +1,7 @@
 package proton
 
 import (
+	"bytes"
 	"encoding/json"
 
 	"github.com/ProtonMail/gluon/rfc822"
@@ -8,13 +9,8 @@ import (
 )
 
 type ImportReq struct {
-	Metadata         ImportMetadata
-	Message          []byte
-	encryptedMessage []byte
-}
-
-func (r ImportReq) GetEncryptedMessageLength() int {
-	return len(r.encryptedMessage)
+	Metadata ImportMetadata
+	Message  []byte
 }
 
 type namedImportReq struct {
@@ -47,7 +43,7 @@ func buildImportReqFields(req []namedImportReq) ([]*resty.MultipartField, error)
 			Param:       req.Name,
 			FileName:    req.Name + ".eml",
 			ContentType: string(rfc822.MessageRFC822),
-			Stream:      resty.NewByteMultipartStream(append(req.encryptedMessage, "\r\n"...)),
+			Reader:      bytes.NewReader(append(req.Message, "\r\n"...)),
 		})
 	}
 
@@ -59,7 +55,7 @@ func buildImportReqFields(req []namedImportReq) ([]*resty.MultipartField, error)
 	fields = append(fields, &resty.MultipartField{
 		Param:       "Metadata",
 		ContentType: "application/json",
-		Stream:      resty.NewByteMultipartStream(b),
+		Reader:      bytes.NewReader(b),
 	})
 
 	return fields, nil
