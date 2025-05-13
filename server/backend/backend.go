@@ -3,6 +3,7 @@ package backend
 import (
 	"fmt"
 	"net/mail"
+	"slices"
 	"sync"
 	"time"
 
@@ -13,7 +14,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/sirupsen/logrus"
 	"golang.org/x/exp/maps"
-	"golang.org/x/exp/slices"
 
 	"github.com/mort666/go-proton-api"
 )
