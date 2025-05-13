@@ -9,11 +9,12 @@ import (
 	"strings"
 
 	"github.com/ProtonMail/gluon/rfc822"
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/ProtonMail/gopenpgp/v2/crypto"
 	"github.com/bradenaw/juniper/xslices"
 	"golang.org/x/exp/maps"
 	"golang.org/x/exp/slices"
+
+	"github.com/mort666/go-proton-api"
 )
 
 func (b *Backend) GetUser(userID string) (proton.User, error) {
@@ -1239,8 +1240,8 @@ func (b *Backend) GetUserContacts(userID string, page int, pageSize int) (int, [
 		return withAcc(b, userID, func(acc *account) ([]proton.Contact, error) {
 			total = len(acc.contacts)
 			values := maps.Values(acc.contacts)
-			slices.SortFunc(values, func(i, j *proton.Contact) bool {
-				return strings.Compare(i.ID, j.ID) < 0
+			slices.SortFunc(values, func(i, j *proton.Contact) int {
+				return strings.Compare(i.ID, j.ID)
 			})
 			return xslices.Map(xslices.Chunk(values, pageSize)[page], func(c *proton.Contact) proton.Contact {
 				return *c
@@ -1271,8 +1272,8 @@ func (b *Backend) GetUserContactEmails(userID, email string, page int, pageSize 
 				return contacts, nil
 			}
 
-			slices.SortFunc(contacts, func(a, b proton.ContactEmail) bool {
-				return strings.Compare(a.ID, b.ID) < 0
+			slices.SortFunc(contacts, func(a, b proton.ContactEmail) int {
+				return strings.Compare(a.ID, b.ID)
 			})
 
 			return xslices.Chunk(contacts, pageSize)[page], nil

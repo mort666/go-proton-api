@@ -6,8 +6,9 @@ import (
 	"net/http"
 
 	"github.com/ProtonMail/gluon/rfc822"
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/gin-gonic/gin"
+
+	"github.com/mort666/go-proton-api"
 )
 
 func (s *Server) handlePostMailAttachments() gin.HandlerFunc {

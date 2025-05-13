@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/ProtonMail/gluon/rfc822"
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/ProtonMail/go-srp"
 	"github.com/ProtonMail/gopenpgp/v2/crypto"
 	"github.com/bradenaw/juniper/xslices"
@@ -15,6 +14,8 @@ import (
 	"github.com/sirupsen/logrus"
 	"golang.org/x/exp/maps"
 	"golang.org/x/exp/slices"
+
+	"github.com/mort666/go-proton-api"
 )
 
 var log = logrus.WithField("pkg", "gpa/server/backend")

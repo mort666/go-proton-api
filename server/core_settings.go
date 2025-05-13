@@ -3,8 +3,9 @@ package server
 import (
 	"net/http"
 
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/gin-gonic/gin"
+
+	"github.com/mort666/go-proton-api"
 )
 
 func (s *Server) handleGetUserSettings() gin.HandlerFunc {

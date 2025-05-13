@@ -4,8 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/stretchr/testify/require"
+
+	"github.com/mort666/go-proton-api"
 )
 
 func TestServer_Quark_CreateUser(t *testing.T) {

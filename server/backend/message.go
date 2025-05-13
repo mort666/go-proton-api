@@ -6,10 +6,11 @@ import (
 	"time"
 
 	"github.com/ProtonMail/gluon/rfc822"
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/bradenaw/juniper/xslices"
 	"github.com/google/uuid"
 	"golang.org/x/exp/slices"
+
+	"github.com/mort666/go-proton-api"
 )
 
 type message struct {

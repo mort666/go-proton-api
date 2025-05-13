@@ -3,7 +3,7 @@ package server
 import (
 	"sync"
 
-	"github.com/ProtonMail/go-proton-api"
+	"github.com/mort666/go-proton-api"
 )
 
 func NewAuthCache() AuthCacher {

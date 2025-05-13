@@ -11,9 +11,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/ProtonMail/go-proton-api"
-	"github.com/ProtonMail/go-proton-api/server"
 	"github.com/stretchr/testify/require"
+
+	"github.com/mort666/go-proton-api"
+	"github.com/mort666/go-proton-api/server"
 )
 
 func TestConnectionReuse(t *testing.T) {

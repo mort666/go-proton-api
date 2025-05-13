@@ -8,10 +8,11 @@ import (
 	"net"
 	"os"
 
-	"github.com/ProtonMail/go-proton-api/server/proto"
 	"github.com/urfave/cli/v2"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+
+	"github.com/mort666/go-proton-api/server/proto"
 )
 
 func main() {

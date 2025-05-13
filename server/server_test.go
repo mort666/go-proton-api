@@ -19,8 +19,6 @@ import (
 	"github.com/Masterminds/semver/v3"
 	"github.com/ProtonMail/gluon/async"
 	"github.com/ProtonMail/gluon/rfc822"
-	"github.com/ProtonMail/go-proton-api"
-	"github.com/ProtonMail/go-proton-api/server/backend"
 	"github.com/ProtonMail/gopenpgp/v2/crypto"
 	"github.com/bradenaw/juniper/iterator"
 	"github.com/bradenaw/juniper/parallel"
@@ -31,6 +29,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/exp/slices"
+
+	"github.com/mort666/go-proton-api"
+	"github.com/mort666/go-proton-api/server/backend"
 )
 
 func TestServer_LoginLogout(t *testing.T) {

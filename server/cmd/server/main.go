@@ -7,11 +7,12 @@ import (
 	"net"
 	"os"
 
-	"github.com/ProtonMail/go-proton-api"
-	"github.com/ProtonMail/go-proton-api/server"
-	"github.com/ProtonMail/go-proton-api/server/proto"
 	"github.com/urfave/cli/v2"
 	"google.golang.org/grpc"
+
+	"github.com/mort666/go-proton-api"
+	"github.com/mort666/go-proton-api/server"
+	"github.com/mort666/go-proton-api/server/proto"
 )
 
 func main() {

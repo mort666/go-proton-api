@@ -4,8 +4,9 @@ import (
 	"encoding/base64"
 
 	"github.com/ProtonMail/gluon/rfc822"
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/google/uuid"
+
+	"github.com/mort666/go-proton-api"
 )
 
 func (b *unsafeBackend) createAttData(dataPacket []byte) string {

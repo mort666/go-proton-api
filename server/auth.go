@@ -4,9 +4,10 @@ import (
 	"encoding/base64"
 	"net/http"
 
-	"github.com/ProtonMail/go-proton-api"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+
+	"github.com/mort666/go-proton-api"
 )
 
 var log = logrus.WithField("pkg", "gpa/server")
